@@ -465,7 +465,6 @@ def TenFold(model , X , y):
   score = cross_val_score(model , X , y , scoring='neg_mean_squared_error',cv=cv)
   return math.sqrt(sum(-1 * score)/len(X))
 
-
 def calcMetrics(ytest , ypred) :
   res = {}
   res['r2'] = round(r2_score(ytest , ypred) , 4)
@@ -533,7 +532,7 @@ def allFeatNormalized(df):
         "GradientBoostingRegression": GradientBoostingReg,
         "BayesianRidgeRegression": BayesianRidgeReg
     }
-
+    
     for modelName, model in models.items():
         y_test_pred = models[modelName](x_train, y_train, x_test)
         resMetrics = calcMetrics(y_test, y_test_pred)
